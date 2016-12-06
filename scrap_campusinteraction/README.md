@@ -1,0 +1,2 @@
+#scrap_campusinteraction
+This script scraps data from www.campusinteraction.com and stores that information into a sqlite database campus. This the website that VIT University, Vellore uses for their placement process. 
