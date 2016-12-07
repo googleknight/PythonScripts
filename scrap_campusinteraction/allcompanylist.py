@@ -10,10 +10,10 @@ driver = webdriver.Chrome()
 driver.get("http://www.campusinteraction.com/login")
 username = driver.find_element_by_name("userName")
 username.clear()
-username.send_keys("") #enter your username
+username.send_keys("13BIT0189") #enter your username
 password = driver.find_element_by_name("password")
 password.clear()
-password.send_keys("")		#enter your password
+password.send_keys("1a2b3c4d5e")		#enter your password
 password.send_keys(Keys.RETURN)
 driver.implicitly_wait(5)
 driver.get("http://www.campusinteraction.com/viewStudentAllJobs.action?jobFetchLimit=0&isViewAllJobs=true")
