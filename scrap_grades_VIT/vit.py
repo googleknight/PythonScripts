@@ -6,14 +6,17 @@ from bs4 import BeautifulSoup
 import re
 from dateutil import parser
 
+usrnm=input('Enter username:')
+pwd=input('Enter password:')
+
 driver = webdriver.Chrome()
 driver.get("https://vtop.vit.ac.in/student/")
 username = driver.find_element_by_name("regno")
 username.clear()
-username.send_keys("")
+username.send_keys(str(usrnm))
 password = driver.find_element_by_name("passwd")
 password.clear()
-password.send_keys("")
+password.send_keys(str(pwd))
 driver.execute_script(open("./autoCaptcha.js").read())#for running javascripts on given page
 password.send_keys(Keys.RETURN)
 driver.get("https://vtop.vit.ac.in/student/grade.asp?sem=FS")
