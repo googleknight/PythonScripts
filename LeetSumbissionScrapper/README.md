@@ -5,8 +5,8 @@ It formats the generated file using [astyle](http://astyle.sourceforge.net/).
 It also generates an index file, listing all the problems with their desciption link.
 
 Python modules used
->>selenium
->>urllib.request
->>BeautifulSoup
->>os
->>sys
+>selenium
+>urllib.request
+>BeautifulSoup
+>os
+>sys
