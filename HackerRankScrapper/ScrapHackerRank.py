@@ -1,3 +1,5 @@
+import os
+
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.keys import Keys
@@ -17,7 +19,6 @@ comment={"C++":"//","C++14":"//","Python 2":"#","Python 3":"#","Java 7":"//","Ja
 
 #class to store each accepted solution details
 class Solutions:
-	#constructor
     def __init__(self, problemname,problemlink,solutionlink,language):
         self.problemname=problemname
         self.problemlink=problemlink
@@ -61,9 +62,16 @@ def getfiles(filename,problemlink,solutionlink,fileext):
         #skipping line numbers and concatinating each line into a single string
         if not line.strip().isdigit():
             data+=line+"\n"
-    #filtering filename ,creating and opening file in write mode
-    f = open(filename.replace("\"","").replace("/","").replace("\\","").replace(":","").replace("?","").replace("*","").replace("<","").replace(">","").replace("|","")
-             + extension[fileext.strip()], 'w')
+
+    #finding category and sub category of problem
+    path=driver.find_elements_by_class_name("backbone")[19]
+    dir1=str(path.get_attribute('href')).split("/")[4]
+    dir2=str(path.get_attribute('href')).split("/")[5]
+    #creating directory if it does not exists
+    os.makedirs(os.path.dirname(dir1+"/"+dir2+"/"), exist_ok=True)
+    # filtering filename and creating and opening file in write mode
+    filename=dir1+"/"+dir2+"/"+filename.replace("\"","").replace("/","").replace("\\","").replace(":","").replace("?","").replace("*","").replace("<","").replace(">","").replace("|","")+ extension[fileext.strip()]
+    f = open(filename, 'w')
     #writing data into file
     f.write(comment[fileext.strip()]+problemlink+'\n'+data)
     f.close()
